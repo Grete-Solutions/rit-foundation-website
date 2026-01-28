@@ -13,6 +13,8 @@ import {
   ArrowRight,
   TrendingUp,
 } from "lucide-react";
+import graduationWinner from "@/assets/graduation-winner.jpg";
+import fashionShowcase from "@/assets/fashion-showcase.jpg";
 
 const impactMetrics = [
   { icon: Users, label: "Girls and Youth Trained", value: "30+" },
@@ -113,11 +115,12 @@ const Impact = () => {
                 </div>
               </div>
             </div>
-            <div className="aspect-square bg-secondary flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-16 w-16 text-primary mx-auto mb-4" />
-                <p className="text-secondary-foreground font-display text-xl">Volta Region, Ghana</p>
-              </div>
+            <div className="aspect-square bg-muted overflow-hidden">
+              <img
+                src={graduationWinner}
+                alt="Teens in Tech graduation winner"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>

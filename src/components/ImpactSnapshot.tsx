@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import certificateCeremony from "@/assets/certificate-ceremony.jpg";
 
 export function ImpactSnapshot() {
   return (
@@ -42,8 +43,8 @@ export function ImpactSnapshot() {
           <div className="relative">
             <div className="aspect-[4/3] bg-muted overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=800&auto=format&fit=crop"
-                alt="Program graduation ceremony"
+                src={certificateCeremony}
+                alt="Certificate award ceremony"
                 className="w-full h-full object-cover"
               />
             </div>
