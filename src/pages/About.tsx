@@ -16,6 +16,8 @@ import {
   Users,
   Star,
 } from "lucide-react";
+import techSkillsParticipant from "@/assets/tech-skills-participant.jpg";
+import presenterSpeaking from "@/assets/presenter-speaking.jpg";
 
 const timeline = [
   {
@@ -99,8 +101,8 @@ const About = () => {
             <div className="relative">
               <div className="aspect-square bg-muted overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=800&auto=format&fit=crop"
-                  alt="Team collaboration"
+                  src={techSkillsParticipant}
+                  alt="RIT Foundation Tech Skills Challenge participant"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -231,9 +233,11 @@ const About = () => {
             </div>
             <div className="grid md:grid-cols-3 gap-8 items-start">
               <div className="aspect-[3/4] bg-muted overflow-hidden">
-                <div className="w-full h-full bg-secondary flex items-center justify-center">
-                  <Users className="h-16 w-16 text-secondary-foreground/30" />
-                </div>
+                <img
+                  src={presenterSpeaking}
+                  alt="RIT Foundation event presenter"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="md:col-span-2">
                 <h3 className="font-display text-2xl font-bold text-foreground mb-2">

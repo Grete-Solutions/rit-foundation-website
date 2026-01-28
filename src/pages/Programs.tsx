@@ -16,6 +16,8 @@ import {
   Clock,
   Award,
 } from "lucide-react";
+import fashionShowcase from "@/assets/fashion-showcase.jpg";
+import presenterSpeaking from "@/assets/presenter-speaking.jpg";
 
 const teensInTechPhases = [
   {
@@ -124,13 +126,22 @@ const Programs = () => {
               </div>
             </div>
 
-            <div className="bg-muted p-8 mb-12 border-l-4 border-primary">
-              <p className="text-lg text-foreground leading-relaxed mb-4">
-                A multi-phase skills development program combining fashion design, basic ICT, and personal development for teenagers aged 9–15, with a strong focus on girls in rural Ghana.
-              </p>
-              <p className="text-muted-foreground">
-                <strong>Target Group:</strong> Teenagers aged 9–15 in rural communities
-              </p>
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <div className="aspect-[4/3] bg-muted overflow-hidden">
+                <img
+                  src={fashionShowcase}
+                  alt="Fashion showcase participant"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="bg-muted p-8 border-l-4 border-primary flex flex-col justify-center">
+                <p className="text-lg text-foreground leading-relaxed mb-4">
+                  A multi-phase skills development program combining fashion design, basic ICT, and personal development for teenagers aged 9–15, with a strong focus on girls in rural Ghana.
+                </p>
+                <p className="text-muted-foreground">
+                  <strong>Target Group:</strong> Teenagers aged 9–15 in rural communities
+                </p>
+              </div>
             </div>
 
             {/* Phases */}

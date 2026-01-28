@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import participantsPledge from "@/assets/participants-pledge.jpg";
 
 export function AboutSnapshot() {
   return (
@@ -11,8 +12,8 @@ export function AboutSnapshot() {
           <div className="relative">
             <div className="aspect-[4/3] bg-muted overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=800&auto=format&fit=crop"
-                alt="Community development work"
+                src={participantsPledge}
+                alt="RIT Foundation participants taking pledge"
                 className="w-full h-full object-cover"
               />
             </div>
