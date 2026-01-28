@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -9,7 +9,13 @@ const navItems = [
   { label: "About Us", link: "/about" },
   { label: "Programs", link: "/programs" },
   { label: "Impact", link: "/impact" },
+  { label: "Partner With Us", link: "/partner-with-us" },
   { label: "Contact", link: "/contact" },
+];
+
+const socialLinks = [
+  { icon: Facebook, href: "https://facebook.com/ritfoundationgh", label: "Facebook" },
+  { icon: Instagram, href: "https://instagram.com/ritskillsgh", label: "Instagram" },
 ];
 
 export function Header() {
@@ -19,7 +25,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -30,71 +36,113 @@ export function Header() {
   }, [location.pathname]);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-warm border-b border-border"
-          : "bg-transparent"
-      )}
-    >
-      <div className="container flex h-20 items-center justify-between">
-        {/* Logo */}
-        <Link
-          to="/"
-          className="flex items-center gap-3 transition-opacity hover:opacity-80"
-          aria-label="RIT Foundation Ghana - Home"
-        >
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary">
-            <span className="font-display text-lg font-bold text-secondary-foreground">
-              RIT
-            </span>
+    <header className="sticky top-0 z-50 w-full">
+      {/* Utility Bar */}
+      <div className="bg-secondary text-secondary-foreground">
+        <div className="container flex h-10 items-center justify-between">
+          <div className="hidden sm:flex items-center gap-4 text-xs">
+            <span>Empowering Girls & Youth in Ghana</span>
           </div>
-          <div className="hidden sm:block">
-            <span className="font-display text-xl font-semibold text-foreground">
-              RIT Foundation
-            </span>
-            <span className="ml-1 text-sm font-medium text-primary">Ghana</span>
-          </div>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav
-          className="hidden items-center gap-1 lg:flex"
-          aria-label="Primary navigation"
-        >
-          {navItems.map((item) => (
+          <div className="flex items-center gap-4 ml-auto">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="text-secondary-foreground/70 hover:text-primary transition-colors"
+              >
+                <social.icon className="h-4 w-4" />
+              </a>
+            ))}
             <Link
-              key={item.label}
-              to={item.link}
-              className={cn(
-                "px-4 py-2 text-sm font-medium transition-colors rounded-md",
-                location.pathname === item.link
-                  ? "text-primary bg-primary/10"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
-              )}
+              to="/contact"
+              className="text-xs font-medium uppercase tracking-wider hover:text-primary transition-colors"
             >
-              {item.label}
+              Contact
             </Link>
-          ))}
-        </nav>
-
-        {/* Desktop CTA */}
-        <div className="hidden items-center gap-3 lg:flex">
-          <Button asChild variant="default" size="default">
-            <Link to="/partner-with-us">Partner With Us</Link>
-          </Button>
+          </div>
         </div>
+      </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="flex h-10 w-10 items-center justify-center rounded-md text-foreground lg:hidden hover:bg-muted transition-colors"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isOpen}
-        >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+      {/* Main Navigation */}
+      <div
+        className={cn(
+          "bg-background transition-all duration-300",
+          isScrolled ? "shadow-warm border-b border-border" : ""
+        )}
+      >
+        <div className="container flex h-20 items-center justify-between">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="flex items-center gap-3 transition-opacity hover:opacity-80"
+            aria-label="RIT Foundation Ghana - Home"
+          >
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full border-[3px] border-primary flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center">
+                    <div className="w-2 h-2 rounded-full bg-primary" />
+                  </div>
+                </div>
+                <div>
+                  <span className="font-display text-xl font-bold text-foreground tracking-tight">
+                    RIT Foundation
+                  </span>
+                  <span className="block text-[10px] text-muted-foreground tracking-[0.15em] uppercase">
+                    Empowering the Future
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav
+            className="hidden items-center gap-1 lg:flex"
+            aria-label="Primary navigation"
+          >
+            {navItems.slice(1, -1).map((item) => (
+              <Link
+                key={item.label}
+                to={item.link}
+                className={cn(
+                  "px-4 py-2 text-sm font-medium transition-colors relative group",
+                  location.pathname === item.link
+                    ? "text-primary"
+                    : "text-foreground hover:text-primary"
+                )}
+              >
+                {item.label}
+                <span
+                  className={cn(
+                    "absolute bottom-0 left-4 right-4 h-0.5 bg-primary transition-transform origin-left",
+                    location.pathname === item.link ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  )}
+                />
+              </Link>
+            ))}
+          </nav>
+
+          {/* Desktop CTA */}
+          <div className="hidden items-center gap-4 lg:flex">
+            <Button asChild className="rounded-none px-6">
+              <Link to="/partner-with-us">Partner With Us</Link>
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="flex h-10 w-10 items-center justify-center text-foreground lg:hidden hover:text-primary transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -104,17 +152,17 @@ export function Header() {
           isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 border-none"
         )}
       >
-        <nav className="container py-4" aria-label="Mobile navigation">
+        <nav className="container py-6" aria-label="Mobile navigation">
           <ul className="flex flex-col gap-1">
             {navItems.map((item) => (
               <li key={item.label}>
                 <Link
                   to={item.link}
                   className={cn(
-                    "block px-4 py-3 text-base font-medium rounded-md transition-colors",
+                    "block px-4 py-3 text-base font-medium transition-colors border-l-2",
                     location.pathname === item.link
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      ? "text-primary border-primary bg-primary/5"
+                      : "text-foreground border-transparent hover:text-primary hover:border-primary/50"
                   )}
                 >
                   {item.label}
@@ -122,8 +170,8 @@ export function Header() {
               </li>
             ))}
           </ul>
-          <div className="mt-4 flex flex-col gap-2 px-4">
-            <Button asChild variant="default" size="lg" className="w-full">
+          <div className="mt-6 px-4">
+            <Button asChild className="w-full rounded-none">
               <Link to="/partner-with-us">Partner With Us</Link>
             </Button>
           </div>
