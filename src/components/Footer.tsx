@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Mail, MapPin, Phone, ArrowRight } from "lucide-react";
+import ritLogo from "@/assets/rit-logo.png";
 
 const quickLinks = [
   { label: "About Us", link: "/about" },
@@ -22,19 +23,11 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-6">
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-full border-[3px] border-primary flex items-center justify-center">
-                  <div className="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-primary" />
-                  </div>
-                </div>
-                <div>
-                  <span className="font-display text-xl font-bold">RIT Foundation</span>
-                  <span className="block text-[10px] text-secondary-foreground/60 tracking-[0.15em] uppercase">
-                    Ghana LBG
-                  </span>
-                </div>
-              </div>
+              <img
+                src={ritLogo}
+                alt="RIT Foundation Ghana"
+                className="h-16 w-auto brightness-0 invert"
+              />
             </Link>
             <p className="text-sm text-secondary-foreground/70 mb-6 leading-relaxed">
               Empowering girls and youth in rural Ghana through vocational, digital, and entrepreneurial skills training.
