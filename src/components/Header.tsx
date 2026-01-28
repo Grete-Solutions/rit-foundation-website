@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import ritLogo from "@/assets/rit-logo.png";
 
 const navItems = [
   { label: "Home", link: "/" },
@@ -77,26 +78,14 @@ export function Header() {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-3 transition-opacity hover:opacity-80"
+            className="flex items-center transition-opacity hover:opacity-80"
             aria-label="RIT Foundation Ghana - Home"
           >
-            <div className="flex flex-col items-center justify-center">
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-full border-[3px] border-primary flex items-center justify-center">
-                  <div className="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-primary" />
-                  </div>
-                </div>
-                <div>
-                  <span className="font-display text-xl font-bold text-foreground tracking-tight">
-                    RIT Foundation
-                  </span>
-                  <span className="block text-[10px] text-muted-foreground tracking-[0.15em] uppercase">
-                    Empowering the Future
-                  </span>
-                </div>
-              </div>
-            </div>
+            <img
+              src={ritLogo}
+              alt="RIT Foundation Ghana"
+              className="h-14 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
