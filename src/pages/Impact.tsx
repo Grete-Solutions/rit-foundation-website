@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import graduationWinner from "@/assets/graduation-winner.jpg";
 import fashionShowcase from "@/assets/fashion-showcase.jpg";
+import { PhotoGallery } from "@/components/PhotoGallery";
 
 const impactMetrics = [
   { icon: Users, label: "Girls and Youth Trained", value: "30+" },
@@ -229,6 +230,9 @@ const Impact = () => {
           </div>
         </div>
       </section>
+
+      {/* Photo Gallery */}
+      <PhotoGallery />
 
       {/* CTA */}
       <section className="py-24 bg-secondary text-secondary-foreground">
