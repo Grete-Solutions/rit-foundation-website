@@ -1,13 +1,21 @@
 import { Layout } from "@/components/Layout";
 import { Hero } from "@/components/Hero";
-import { Mission } from "@/components/Mission";
+import { AboutSnapshot } from "@/components/AboutSnapshot";
+import { ProblemStatement } from "@/components/ProblemStatement";
+import { ProgramsOverview } from "@/components/ProgramsOverview";
+import { ImpactSnapshot } from "@/components/ImpactSnapshot";
+import { WhyPartner } from "@/components/WhyPartner";
 import { CallToAction } from "@/components/CallToAction";
 
 const Index = () => {
   return (
     <Layout>
       <Hero />
-      <Mission />
+      <AboutSnapshot />
+      <ProblemStatement />
+      <ProgramsOverview />
+      <ImpactSnapshot />
+      <WhyPartner />
       <CallToAction />
     </Layout>
   );
