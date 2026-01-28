@@ -1,83 +1,52 @@
 import { Layout } from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { MapPin, Phone, Mail, Building2, Facebook, Instagram } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
-import { z } from "zod";
-
-const contactSchema = z.object({
-  fullName: z.string().trim().min(1, "Full name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
-  organization: z.string().trim().max(100, "Organization must be less than 100 characters").optional(),
-  subject: z.string().min(1, "Please select a subject"),
-  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
-
-const subjectOptions = [
-  "Partnership Inquiry",
-  "Program Information",
-  "General Inquiry",
-  "Media or Communications",
-];
+  MapPin,
+  Phone,
+  Mail,
+  Building2,
+  Facebook,
+  Instagram,
+} from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const socialLinks = [
   { icon: Facebook, name: "Facebook", handle: "@ritfoundationgh", link: "https://facebook.com/ritfoundationgh" },
   { icon: Instagram, name: "Instagram", handle: "@ritskillsgh", link: "https://instagram.com/ritskillsgh" },
 ];
 
+const faqs = [
+  {
+    question: "What programs does RIT Foundation Ghana offer?",
+    answer: "We offer the Teens in Tech Initiative (fashion design, ICT, life skills), Digital Skills Development, Entrepreneurship Training, Zero-Waste Training, and Short-Term Workshops in beadwork, resin earring design, craftworks, and makeup artistry.",
+  },
+  {
+    question: "Who can participate in your programs?",
+    answer: "Our programs primarily target girls and youth aged 9–15 in rural communities, particularly in the Volta Region of Ghana. However, some programs like short-term workshops are open to the general public.",
+  },
+  {
+    question: "How can I partner with RIT Foundation Ghana?",
+    answer: "We welcome partnerships from corporate organizations, foundations, government agencies, and NGOs. You can support us through program funding, technical expertise, equipment donations, or joint implementation. Please reach out via email or phone to discuss partnership opportunities.",
+  },
+  {
+    question: "Is RIT Foundation Ghana a registered organization?",
+    answer: "Yes, RIT Foundation Ghana is a registered non-governmental organization under the Companies Act, 2019 (Act 992) with registration number CG173310421.",
+  },
+  {
+    question: "Where are your programs implemented?",
+    answer: "Our programs are currently implemented in Kpotame and Sogakope in the Volta Region of Ghana. We plan to expand to additional rural communities in the future.",
+  },
+  {
+    question: "How can I support RIT Foundation Ghana?",
+    answer: "You can support us through partnerships, donations, volunteering your expertise, or spreading awareness about our work. Contact us to learn more about how you can contribute to empowering girls and youth in Ghana.",
+  },
+];
+
 const Contact = () => {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState<Partial<ContactFormData>>({});
-  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
-
-  const handleInputChange = (field: keyof ContactFormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setErrors({});
-
-    const result = contactSchema.safeParse(formData);
-
-    if (!result.success) {
-      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
-      result.error.errors.forEach((err) => {
-        const field = err.path[0] as keyof ContactFormData;
-        fieldErrors[field] = err.message;
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. We will get back to you as soon as possible.",
-      });
-      setFormData({});
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
-  };
-
   return (
     <Layout>
       {/* Page Header */}
@@ -89,173 +58,114 @@ const Contact = () => {
               Contact Us
             </h1>
             <p className="text-xl text-secondary-foreground/80 leading-relaxed">
-              We welcome inquiries, partnership discussions, and general questions about our work.
+              We welcome inquiries, partnership discussions, and questions about our work. Reach out through any of the channels below.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Details */}
       <section className="py-24 bg-background">
         <div className="container">
-          <div className="grid lg:grid-cols-5 gap-16">
-            {/* Contact Info */}
-            <div className="lg:col-span-2 space-y-10">
-              <div>
-                <span className="section-label mb-6 block">Contact Details</span>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <Building2 className="h-6 w-6 text-primary shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Organization</p>
-                      <p className="font-semibold text-foreground">RIT Foundation Ghana LBG</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <Mail className="h-6 w-6 text-primary shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Email</p>
-                      <a href="mailto:ritfoundationofficial@gmail.com" className="font-semibold text-foreground hover:text-primary transition-colors break-all">
-                        ritfoundationofficial@gmail.com
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <Phone className="h-6 w-6 text-primary shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Phone</p>
-                      <p className="font-semibold text-foreground">+233 55 494 2195</p>
-                      <p className="font-semibold text-foreground">+233 24 251 5127</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <MapPin className="h-6 w-6 text-primary shrink-0" />
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">Address</p>
-                      <div className="font-semibold text-foreground">
-                        <p>P.O. Box SG 90, Sogasco Street</p>
-                        <p>Sogakope, Volta Region, Ghana</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <span className="section-label mb-4 block">Connect Online</span>
-                <div className="flex gap-3">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex h-12 w-12 items-center justify-center border border-border text-muted-foreground hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all"
-                      aria-label={social.name}
-                    >
-                      <social.icon className="h-5 w-5" />
-                    </a>
-                  ))}
-                </div>
-              </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Organization */}
+            <div className="p-8 bg-muted border-l-4 border-primary">
+              <Building2 className="h-8 w-8 text-primary mb-4" />
+              <h3 className="font-display text-lg font-semibold text-foreground mb-2">Organization</h3>
+              <p className="text-foreground font-medium">RIT Foundation Ghana LBG</p>
+              <p className="text-sm text-muted-foreground mt-2">Registered NGO</p>
+              <p className="text-sm text-muted-foreground">Reg. No: CG173310421</p>
             </div>
 
-            {/* Contact Form */}
-            <div className="lg:col-span-3">
-              <div className="p-8 sm:p-10 bg-muted">
-                <span className="section-label mb-2 block">Send a Message</span>
-                <h2 className="font-display text-2xl font-bold text-foreground mb-8">
-                  We'd Love to Hear From You
-                </h2>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="fullName" className="block text-sm font-medium text-foreground mb-2">
-                        Full Name <span className="text-destructive">*</span>
-                      </label>
-                      <Input
-                        id="fullName"
-                        placeholder="Your full name"
-                        value={formData.fullName || ""}
-                        onChange={(e) => handleInputChange("fullName", e.target.value)}
-                        className={`rounded-none ${errors.fullName ? "border-destructive" : ""}`}
-                      />
-                      {errors.fullName && <p className="text-sm text-destructive mt-1">{errors.fullName}</p>}
-                    </div>
-
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                        Email Address <span className="text-destructive">*</span>
-                      </label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="you@example.com"
-                        value={formData.email || ""}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
-                        className={`rounded-none ${errors.email ? "border-destructive" : ""}`}
-                      />
-                      {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
-                    </div>
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="organization" className="block text-sm font-medium text-foreground mb-2">
-                        Organization <span className="text-muted-foreground">(optional)</span>
-                      </label>
-                      <Input
-                        id="organization"
-                        placeholder="Your organization"
-                        value={formData.organization || ""}
-                        onChange={(e) => handleInputChange("organization", e.target.value)}
-                        className="rounded-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                        Subject <span className="text-destructive">*</span>
-                      </label>
-                      <Select value={formData.subject || ""} onValueChange={(value) => handleInputChange("subject", value)}>
-                        <SelectTrigger id="subject" className={`rounded-none ${errors.subject ? "border-destructive" : ""}`}>
-                          <SelectValue placeholder="Select a subject" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-popover">
-                          {subjectOptions.map((option) => (
-                            <SelectItem key={option} value={option}>{option}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      {errors.subject && <p className="text-sm text-destructive mt-1">{errors.subject}</p>}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Message <span className="text-destructive">*</span>
-                    </label>
-                    <Textarea
-                      id="message"
-                      placeholder="How can we help you?"
-                      rows={6}
-                      value={formData.message || ""}
-                      onChange={(e) => handleInputChange("message", e.target.value)}
-                      className={`rounded-none ${errors.message ? "border-destructive" : ""}`}
-                    />
-                    {errors.message && <p className="text-sm text-destructive mt-1">{errors.message}</p>}
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full rounded-none" disabled={isSubmitting}>
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
-                </form>
-              </div>
+            {/* Email */}
+            <div className="p-8 bg-muted border-l-4 border-primary">
+              <Mail className="h-8 w-8 text-primary mb-4" />
+              <h3 className="font-display text-lg font-semibold text-foreground mb-2">Email</h3>
+              <a
+                href="mailto:ritfoundationofficial@gmail.com"
+                className="text-foreground font-medium hover:text-primary transition-colors break-all"
+              >
+                ritfoundationofficial@gmail.com
+              </a>
+              <p className="text-sm text-muted-foreground mt-2">We respond within 48 hours</p>
             </div>
+
+            {/* Phone */}
+            <div className="p-8 bg-muted border-l-4 border-primary">
+              <Phone className="h-8 w-8 text-primary mb-4" />
+              <h3 className="font-display text-lg font-semibold text-foreground mb-2">Phone</h3>
+              <p className="text-foreground font-medium">+233 55 494 2195</p>
+              <p className="text-foreground font-medium">+233 24 251 5127</p>
+              <p className="text-sm text-muted-foreground mt-2">Mon - Fri, 9am - 5pm GMT</p>
+            </div>
+
+            {/* Address */}
+            <div className="p-8 bg-muted border-l-4 border-primary">
+              <MapPin className="h-8 w-8 text-primary mb-4" />
+              <h3 className="font-display text-lg font-semibold text-foreground mb-2">Address</h3>
+              <p className="text-foreground font-medium">P.O. Box SG 90</p>
+              <p className="text-foreground font-medium">Sogasco Street, Sogakope</p>
+              <p className="text-sm text-muted-foreground mt-2">Volta Region, Ghana</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Media */}
+      <section className="py-16 bg-muted">
+        <div className="container">
+          <div className="max-w-2xl mx-auto text-center">
+            <span className="section-label mb-4 block">Connect With Us</span>
+            <h2 className="font-display text-2xl font-bold text-foreground mb-8">Follow Us on Social Media</h2>
+            <div className="flex justify-center gap-6">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-6 py-4 bg-background border border-border hover:border-primary transition-colors group"
+                >
+                  <social.icon className="h-6 w-6 text-primary" />
+                  <div className="text-left">
+                    <p className="font-medium text-foreground group-hover:text-primary transition-colors">{social.name}</p>
+                    <p className="text-sm text-muted-foreground">{social.handle}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-24 bg-background">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="section-label mb-4 block">Help Center</span>
+              <h2 className="font-display text-3xl font-bold text-foreground">Frequently Asked Questions</h2>
+              <p className="text-muted-foreground mt-4">
+                Find answers to common questions about our programs and organization.
+              </p>
+            </div>
+
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="border border-border bg-muted px-6"
+                >
+                  <AccordionTrigger className="text-left font-display text-lg font-medium text-foreground hover:text-primary py-6">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </section>
