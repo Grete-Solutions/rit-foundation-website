@@ -7,16 +7,14 @@ import {
   CheckCircle2,
   ArrowRight,
   Award,
-  Heart,
-  Lightbulb,
-  Users,
-  Clock,
-  Star,
-  Zap,
-  Sparkles,
-  Trophy,
-  Compass,
   Flame,
+  Compass,
+  Sparkles,
+  Clock,
+  Zap,
+  Trophy,
+  Users,
+  Star,
 } from "lucide-react";
 
 const timeline = [
@@ -68,17 +66,15 @@ const About = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-secondary text-secondary-foreground">
         <div className="container">
           <div className="max-w-3xl">
-            <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-4">
-              About Us
-            </span>
-            <h1 className="font-display text-4xl sm:text-5xl font-bold text-secondary-foreground mb-6">
+            <span className="section-label mb-4 block text-primary">About Us</span>
+            <h1 className="font-display text-4xl sm:text-5xl font-bold mb-6">
               About RIT Foundation Ghana
             </h1>
             <p className="text-xl text-secondary-foreground/80 leading-relaxed">
-              RIT Foundation Ghana is a registered non-governmental organization committed to empowering girls, young women, and youth in rural Ghana through vocational, technical, digital, and entrepreneurial skills development.
+              A registered non-governmental organization committed to empowering girls, young women, and youth in rural Ghana.
             </p>
           </div>
         </div>
@@ -87,15 +83,28 @@ const About = () => {
       {/* Who We Are */}
       <section className="py-24 bg-background">
         <div className="container">
-          <div className="max-w-4xl">
-            <h2 className="font-display text-3xl font-bold text-foreground mb-8">Who We Are</h2>
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-              <p>
-                Founded in 2020 and officially registered in 2021, RIT Foundation Ghana works to bridge the gap between education and employability for underserved youth.
-              </p>
-              <p>
-                Our programs are designed with a strong gender-responsive approach, ensuring that girls and young women—particularly in rural communities—have access to practical skills that enable economic independence and self-reliance.
-              </p>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="section-label mb-4 block">Our Identity</span>
+              <h2 className="font-display text-3xl font-bold text-foreground mb-6">Who We Are</h2>
+              <div className="space-y-6 text-muted-foreground leading-relaxed">
+                <p>
+                  Founded in 2020 and officially registered in 2021, RIT Foundation Ghana works to bridge the gap between education and employability for underserved youth.
+                </p>
+                <p>
+                  Our programs are designed with a strong gender-responsive approach, ensuring that girls and young women—particularly in rural communities—have access to practical skills that enable economic independence and self-reliance.
+                </p>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square bg-muted overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=800&auto=format&fit=crop"
+                  alt="Team collaboration"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 border-4 border-primary -z-10" />
             </div>
           </div>
         </div>
@@ -104,22 +113,18 @@ const About = () => {
       {/* Vision & Mission */}
       <section className="py-24 bg-muted">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="p-10 rounded-2xl bg-card border border-border">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary mb-6">
-                <Eye className="h-7 w-7" />
-              </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-background p-10 border-l-4 border-primary">
+              <Eye className="h-10 w-10 text-primary mb-6" />
               <h2 className="font-display text-2xl font-bold text-foreground mb-4">Our Vision</h2>
               <p className="text-muted-foreground leading-relaxed">
                 To be West Africa's premier platform advancing gender-responsive empowerment through innovative vocational, technical, and digital education, creating pathways for economic independence and leadership.
               </p>
             </div>
-            <div className="p-10 rounded-2xl bg-secondary">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/20 text-primary mb-6">
-                <Target className="h-7 w-7" />
-              </div>
-              <h2 className="font-display text-2xl font-bold text-secondary-foreground mb-4">Our Mission</h2>
-              <p className="text-secondary-foreground/90 leading-relaxed">
+            <div className="bg-secondary text-secondary-foreground p-10 border-l-4 border-primary">
+              <Target className="h-10 w-10 text-primary mb-6" />
+              <h2 className="font-display text-2xl font-bold mb-4">Our Mission</h2>
+              <p className="text-secondary-foreground/80 leading-relaxed">
                 To deliver gender-responsive, transformative education and skills development through technical training, entrepreneurship, and sustainable practices, enabling youth and women to become innovative leaders and agents of positive change.
               </p>
             </div>
@@ -127,25 +132,22 @@ const About = () => {
         </div>
       </section>
 
-      {/* Goals and Objectives */}
+      {/* Goals */}
       <section className="py-24 bg-background">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                Our Goals and Objectives
+              <span className="section-label mb-4 block">Our Objectives</span>
+              <h2 className="font-display text-3xl font-bold text-foreground">
+                Goals and Objectives
               </h2>
-              <p className="text-muted-foreground">What we are working to achieve</p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-6">
+            <div className="space-y-4">
               {goals.map((goal, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 p-6 rounded-xl bg-card border border-border"
-                >
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <CheckCircle2 className="h-5 w-5" />
-                  </div>
+                <div key={index} className="flex items-start gap-4 p-6 bg-muted border-l-4 border-primary">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-primary text-primary-foreground font-bold">
+                    {index + 1}
+                  </span>
                   <p className="text-foreground">{goal}</p>
                 </div>
               ))}
@@ -154,46 +156,29 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Journey / Timeline */}
-      <section className="py-24 bg-secondary">
+      {/* Timeline */}
+      <section className="py-24 bg-secondary text-secondary-foreground">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl font-bold text-secondary-foreground mb-4">
-              Our Journey
-            </h2>
-            <p className="text-secondary-foreground/80">Growth, continuity, and experience</p>
+            <span className="section-label mb-4 block text-primary">Our History</span>
+            <h2 className="font-display text-3xl font-bold">Our Journey</h2>
           </div>
           <div className="max-w-3xl mx-auto">
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-0.5 bg-secondary-foreground/20 -translate-x-1/2" />
-
-              {timeline.map((item, index) => (
-                <div
-                  key={item.year}
-                  className={`relative flex items-start gap-6 mb-12 last:mb-0 ${
-                    index % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"
-                  }`}
-                >
-                  {/* Year badge */}
-                  <div className="absolute left-4 sm:left-1/2 -translate-x-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold z-10">
-                    <span className="sr-only">{item.year}</span>
+            {timeline.map((item, index) => (
+              <div key={item.year} className="flex gap-8 mb-8 last:mb-0">
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 bg-primary text-primary-foreground flex items-center justify-center font-display font-bold text-lg">
+                    {item.year}
                   </div>
-
-                  {/* Content */}
-                  <div
-                    className={`ml-12 sm:ml-0 sm:w-[calc(50%-2rem)] p-6 rounded-xl bg-secondary-foreground/5 border border-secondary-foreground/10 ${
-                      index % 2 === 0 ? "sm:mr-auto" : "sm:ml-auto"
-                    }`}
-                  >
-                    <span className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-3">
-                      {item.year}
-                    </span>
-                    <p className="text-secondary-foreground/90">{item.event}</p>
-                  </div>
+                  {index < timeline.length - 1 && (
+                    <div className="w-0.5 flex-1 bg-secondary-foreground/20 mt-4" />
+                  )}
                 </div>
-              ))}
-            </div>
+                <div className="flex-1 pb-8">
+                  <p className="text-secondary-foreground/80 leading-relaxed">{item.event}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -202,20 +187,13 @@ const About = () => {
       <section className="py-24 bg-background">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-              Our Values
-            </h2>
-            <p className="text-muted-foreground">The principles that guide everything we do</p>
+            <span className="section-label mb-4 block">Guiding Principles</span>
+            <h2 className="font-display text-3xl font-bold text-foreground">Our Values</h2>
           </div>
           <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-4">
             {values.map((value) => (
-              <div
-                key={value.name}
-                className="flex flex-col items-center text-center p-4 rounded-xl bg-card border border-border hover:border-primary/30 hover:shadow-warm transition-all duration-300"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary mb-3">
-                  <value.icon className="h-5 w-5" />
-                </div>
+              <div key={value.name} className="text-center p-4 border border-border hover:border-primary transition-colors group">
+                <value.icon className="h-6 w-6 text-primary mx-auto mb-2" />
                 <span className="text-xs font-medium text-foreground">{value.name}</span>
               </div>
             ))}
@@ -223,27 +201,18 @@ const About = () => {
         </div>
       </section>
 
-      {/* What We Believe */}
+      {/* Beliefs */}
       <section className="py-24 bg-muted">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary mx-auto mb-6">
-                <Lightbulb className="h-7 w-7" />
-              </div>
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                What We Believe
-              </h2>
+              <span className="section-label mb-4 block">Our Convictions</span>
+              <h2 className="font-display text-3xl font-bold text-foreground">What We Believe</h2>
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
               {beliefs.map((belief, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-4 p-6 rounded-xl bg-card border border-border"
-                >
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary text-secondary-foreground mt-0.5">
-                    <Heart className="h-3.5 w-3.5" />
-                  </div>
+                <div key={index} className="flex items-start gap-4 p-6 bg-background border border-border">
+                  <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                   <p className="text-muted-foreground">{belief}</p>
                 </div>
               ))}
@@ -257,32 +226,27 @@ const About = () => {
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                Our Leadership
-              </h2>
+              <span className="section-label mb-4 block">Our Team</span>
+              <h2 className="font-display text-3xl font-bold text-foreground">Our Leadership</h2>
             </div>
-            <div className="p-8 sm:p-10 rounded-2xl bg-card border border-border">
-              <div className="flex flex-col sm:flex-row gap-8">
-                <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-secondary text-secondary-foreground mx-auto sm:mx-0">
-                  <Users className="h-10 w-10" />
-                </div>
-                <div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-1 text-center sm:text-left">
-                    Deborah Morkporkpor Zottor
-                  </h3>
-                  <p className="text-primary font-medium mb-2 text-center sm:text-left">
-                    Founder & Director
-                  </p>
-                  <p className="text-sm text-muted-foreground mb-4 text-center sm:text-left">
-                    MPhil Curriculum and Pedagogic Studies, BSc ICT Education
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Deborah Zottor is an education and development professional with a strong background in ICT education and curriculum development. She leads RIT Foundation Ghana's mission to empower youth through skills-based and gender-responsive training.
-                  </p>
+            <div className="grid md:grid-cols-3 gap-8 items-start">
+              <div className="aspect-[3/4] bg-muted overflow-hidden">
+                <div className="w-full h-full bg-secondary flex items-center justify-center">
+                  <Users className="h-16 w-16 text-secondary-foreground/30" />
                 </div>
               </div>
-              <div className="mt-8 pt-6 border-t border-border">
-                <p className="text-sm text-muted-foreground italic text-center">
+              <div className="md:col-span-2">
+                <h3 className="font-display text-2xl font-bold text-foreground mb-2">
+                  Deborah Morkporkpor Zottor
+                </h3>
+                <p className="text-primary font-medium mb-2">Founder & Director</p>
+                <p className="text-sm text-muted-foreground mb-4">
+                  MPhil Curriculum and Pedagogic Studies, BSc ICT Education
+                </p>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Deborah Zottor is an education and development professional with a strong background in ICT education and curriculum development. She leads RIT Foundation Ghana's mission to empower youth through skills-based and gender-responsive training.
+                </p>
+                <p className="text-sm text-muted-foreground italic border-l-2 border-primary pl-4">
                   Board members and governance details will be published as part of our commitment to transparency.
                 </p>
               </div>
@@ -294,27 +258,24 @@ const About = () => {
       {/* Legal Status */}
       <section className="py-24 bg-muted">
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-secondary text-secondary-foreground mx-auto mb-6">
-              <Award className="h-7 w-7" />
-            </div>
-            <h2 className="font-display text-3xl font-bold text-foreground mb-8">
-              Legal Status
-            </h2>
+          <div className="max-w-3xl mx-auto text-center">
+            <Award className="h-12 w-12 text-primary mx-auto mb-6" />
+            <span className="section-label mb-4 block">Verification</span>
+            <h2 className="font-display text-3xl font-bold text-foreground mb-8">Legal Status</h2>
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="p-6 rounded-xl bg-card border border-border">
+              <div className="p-6 bg-background border border-border">
                 <p className="text-sm text-muted-foreground mb-1">Organization Type</p>
-                <p className="font-semibold text-foreground">Non-Governmental Organization (NGO)</p>
+                <p className="font-semibold text-foreground">Non-Governmental Organization</p>
               </div>
-              <div className="p-6 rounded-xl bg-card border border-border">
+              <div className="p-6 bg-background border border-border">
                 <p className="text-sm text-muted-foreground mb-1">Registration Act</p>
                 <p className="font-semibold text-foreground">Companies Act, 2019 (Act 992)</p>
               </div>
-              <div className="p-6 rounded-xl bg-card border border-border">
+              <div className="p-6 bg-background border border-border">
                 <p className="text-sm text-muted-foreground mb-1">Registration Number</p>
                 <p className="font-semibold text-foreground">CG173310421</p>
               </div>
-              <div className="p-6 rounded-xl bg-card border border-border">
+              <div className="p-6 bg-background border border-border">
                 <p className="text-sm text-muted-foreground mb-1">Country</p>
                 <p className="font-semibold text-foreground">Ghana</p>
               </div>
@@ -324,40 +285,25 @@ const About = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-secondary">
+      <section className="py-24 bg-background">
         <div className="container">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-primary to-accent p-12 sm:p-16 text-center">
-            <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-secondary/10 blur-3xl" />
-            <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-secondary/10 blur-3xl" />
-
-            <div className="relative z-10 max-w-2xl mx-auto">
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-primary-foreground mb-6">
-                Partner With Us to Empower the Next Generation
-              </h2>
-              <p className="text-lg text-primary-foreground/90 mb-10 leading-relaxed">
-                We welcome partnerships that support skills development, gender equality, and sustainable livelihoods.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button
-                  asChild
-                  size="lg"
-                  variant="secondary"
-                  className="text-base group bg-secondary-foreground text-secondary hover:bg-secondary-foreground/90"
-                >
-                  <Link to="/partner-with-us">
-                    Partner With Us
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="text-base border-primary-foreground/30 text-primary-foreground bg-transparent hover:bg-primary-foreground/10 hover:text-primary-foreground"
-                >
-                  <Link to="/contact">Contact Us</Link>
-                </Button>
-              </div>
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-6">
+              Partner With Us to Empower the Next Generation
+            </h2>
+            <p className="text-lg text-muted-foreground mb-10">
+              We welcome partnerships that support skills development, gender equality, and sustainable livelihoods.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button asChild size="lg" className="rounded-none px-8 group">
+                <Link to="/partner-with-us">
+                  Partner With Us
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="rounded-none px-8">
+                <Link to="/contact">Contact Us</Link>
+              </Button>
             </div>
           </div>
         </div>

@@ -32,18 +32,8 @@ const subjectOptions = [
 ];
 
 const socialLinks = [
-  {
-    icon: Facebook,
-    name: "Facebook",
-    handle: "@ritfoundationgh",
-    link: "https://facebook.com/ritfoundationgh",
-  },
-  {
-    icon: Instagram,
-    name: "Instagram",
-    handle: "@ritskillsgh",
-    link: "https://instagram.com/ritskillsgh",
-  },
+  { icon: Facebook, name: "Facebook", handle: "@ritfoundationgh", link: "https://facebook.com/ritfoundationgh" },
+  { icon: Instagram, name: "Instagram", handle: "@ritskillsgh", link: "https://instagram.com/ritskillsgh" },
 ];
 
 const Contact = () => {
@@ -54,7 +44,6 @@ const Contact = () => {
 
   const handleInputChange = (field: keyof ContactFormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    // Clear error when user starts typing
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
@@ -78,7 +67,6 @@ const Contact = () => {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
@@ -93,17 +81,15 @@ const Contact = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-secondary text-secondary-foreground">
         <div className="container">
           <div className="max-w-3xl">
-            <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-4">
-              Get in Touch
-            </span>
-            <h1 className="font-display text-4xl sm:text-5xl font-bold text-secondary-foreground mb-6">
+            <span className="section-label mb-4 block text-primary">Get in Touch</span>
+            <h1 className="font-display text-4xl sm:text-5xl font-bold mb-6">
               Contact Us
             </h1>
             <p className="text-xl text-secondary-foreground/80 leading-relaxed">
-              We welcome inquiries, partnership discussions, and general questions about our work. Reach out to us using the details below or the contact form.
+              We welcome inquiries, partnership discussions, and general questions about our work.
             </p>
           </div>
         </div>
@@ -113,46 +99,31 @@ const Contact = () => {
       <section className="py-24 bg-background">
         <div className="container">
           <div className="grid lg:grid-cols-5 gap-16">
-            {/* Contact Info - 2 columns */}
+            {/* Contact Info */}
             <div className="lg:col-span-2 space-y-10">
-              {/* Get in Touch */}
               <div>
-                <h2 className="font-display text-2xl font-bold text-foreground mb-6">
-                  Get in Touch
-                </h2>
+                <span className="section-label mb-6 block">Contact Details</span>
                 <div className="space-y-6">
-                  {/* Organization */}
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      <Building2 className="h-6 w-6" />
-                    </div>
+                    <Building2 className="h-6 w-6 text-primary shrink-0" />
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Organization</p>
                       <p className="font-semibold text-foreground">RIT Foundation Ghana LBG</p>
                     </div>
                   </div>
 
-                  {/* Email */}
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      <Mail className="h-6 w-6" />
-                    </div>
+                    <Mail className="h-6 w-6 text-primary shrink-0" />
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Email</p>
-                      <a
-                        href="mailto:ritfoundationofficial@gmail.com"
-                        className="font-semibold text-foreground hover:text-primary transition-colors break-all"
-                      >
+                      <a href="mailto:ritfoundationofficial@gmail.com" className="font-semibold text-foreground hover:text-primary transition-colors break-all">
                         ritfoundationofficial@gmail.com
                       </a>
                     </div>
                   </div>
 
-                  {/* Phone */}
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      <Phone className="h-6 w-6" />
-                    </div>
+                    <Phone className="h-6 w-6 text-primary shrink-0" />
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Phone</p>
                       <p className="font-semibold text-foreground">+233 55 494 2195</p>
@@ -160,64 +131,48 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Address */}
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                      <MapPin className="h-6 w-6" />
-                    </div>
+                    <MapPin className="h-6 w-6 text-primary shrink-0" />
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Address</p>
                       <div className="font-semibold text-foreground">
-                        <p>P.O. Box SG 90</p>
-                        <p>Sogasco Street</p>
-                        <p>Sogakope, Volta Region</p>
-                        <p>Ghana</p>
+                        <p>P.O. Box SG 90, Sogasco Street</p>
+                        <p>Sogakope, Volta Region, Ghana</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Social Media */}
               <div>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-4">
-                  Connect With Us Online
-                </h3>
-                <div className="space-y-3">
+                <span className="section-label mb-4 block">Connect Online</span>
+                <div className="flex gap-3">
                   {socialLinks.map((social) => (
                     <a
                       key={social.name}
                       href={social.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/30 hover:shadow-warm transition-all duration-300 group"
+                      className="flex h-12 w-12 items-center justify-center border border-border text-muted-foreground hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all"
+                      aria-label={social.name}
                     >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                        <social.icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-foreground">{social.name}</p>
-                        <p className="text-sm text-muted-foreground">{social.handle}</p>
-                      </div>
+                      <social.icon className="h-5 w-5" />
                     </a>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Contact Form - 3 columns */}
+            {/* Contact Form */}
             <div className="lg:col-span-3">
-              <div className="p-8 sm:p-10 rounded-2xl bg-card border border-border">
-                <h2 className="font-display text-2xl font-bold text-foreground mb-2">
-                  Send Us a Message
+              <div className="p-8 sm:p-10 bg-muted">
+                <span className="section-label mb-2 block">Send a Message</span>
+                <h2 className="font-display text-2xl font-bold text-foreground mb-8">
+                  We'd Love to Hear From You
                 </h2>
-                <p className="text-muted-foreground mb-8">
-                  Fill out the form below and we'll respond as soon as possible.
-                </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
-                    {/* Full Name */}
                     <div>
                       <label htmlFor="fullName" className="block text-sm font-medium text-foreground mb-2">
                         Full Name <span className="text-destructive">*</span>
@@ -227,18 +182,11 @@ const Contact = () => {
                         placeholder="Your full name"
                         value={formData.fullName || ""}
                         onChange={(e) => handleInputChange("fullName", e.target.value)}
-                        className={errors.fullName ? "border-destructive" : ""}
-                        aria-invalid={!!errors.fullName}
-                        aria-describedby={errors.fullName ? "fullName-error" : undefined}
+                        className={`rounded-none ${errors.fullName ? "border-destructive" : ""}`}
                       />
-                      {errors.fullName && (
-                        <p id="fullName-error" className="text-sm text-destructive mt-1">
-                          {errors.fullName}
-                        </p>
-                      )}
+                      {errors.fullName && <p className="text-sm text-destructive mt-1">{errors.fullName}</p>}
                     </div>
 
-                    {/* Email */}
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                         Email Address <span className="text-destructive">*</span>
@@ -249,20 +197,13 @@ const Contact = () => {
                         placeholder="you@example.com"
                         value={formData.email || ""}
                         onChange={(e) => handleInputChange("email", e.target.value)}
-                        className={errors.email ? "border-destructive" : ""}
-                        aria-invalid={!!errors.email}
-                        aria-describedby={errors.email ? "email-error" : undefined}
+                        className={`rounded-none ${errors.email ? "border-destructive" : ""}`}
                       />
-                      {errors.email && (
-                        <p id="email-error" className="text-sm text-destructive mt-1">
-                          {errors.email}
-                        </p>
-                      )}
+                      {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-6">
-                    {/* Organization */}
                     <div>
                       <label htmlFor="organization" className="block text-sm font-medium text-foreground mb-2">
                         Organization <span className="text-muted-foreground">(optional)</span>
@@ -272,44 +213,28 @@ const Contact = () => {
                         placeholder="Your organization"
                         value={formData.organization || ""}
                         onChange={(e) => handleInputChange("organization", e.target.value)}
-                        className={errors.organization ? "border-destructive" : ""}
+                        className="rounded-none"
                       />
-                      {errors.organization && (
-                        <p className="text-sm text-destructive mt-1">{errors.organization}</p>
-                      )}
                     </div>
 
-                    {/* Subject */}
                     <div>
                       <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
                         Subject <span className="text-destructive">*</span>
                       </label>
-                      <Select
-                        value={formData.subject || ""}
-                        onValueChange={(value) => handleInputChange("subject", value)}
-                      >
-                        <SelectTrigger
-                          id="subject"
-                          className={errors.subject ? "border-destructive" : ""}
-                          aria-invalid={!!errors.subject}
-                        >
+                      <Select value={formData.subject || ""} onValueChange={(value) => handleInputChange("subject", value)}>
+                        <SelectTrigger id="subject" className={`rounded-none ${errors.subject ? "border-destructive" : ""}`}>
                           <SelectValue placeholder="Select a subject" />
                         </SelectTrigger>
                         <SelectContent className="bg-popover">
                           {subjectOptions.map((option) => (
-                            <SelectItem key={option} value={option}>
-                              {option}
-                            </SelectItem>
+                            <SelectItem key={option} value={option}>{option}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
-                      {errors.subject && (
-                        <p className="text-sm text-destructive mt-1">{errors.subject}</p>
-                      )}
+                      {errors.subject && <p className="text-sm text-destructive mt-1">{errors.subject}</p>}
                     </div>
                   </div>
 
-                  {/* Message */}
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                       Message <span className="text-destructive">*</span>
@@ -320,18 +245,12 @@ const Contact = () => {
                       rows={6}
                       value={formData.message || ""}
                       onChange={(e) => handleInputChange("message", e.target.value)}
-                      className={errors.message ? "border-destructive" : ""}
-                      aria-invalid={!!errors.message}
-                      aria-describedby={errors.message ? "message-error" : undefined}
+                      className={`rounded-none ${errors.message ? "border-destructive" : ""}`}
                     />
-                    {errors.message && (
-                      <p id="message-error" className="text-sm text-destructive mt-1">
-                        {errors.message}
-                      </p>
-                    )}
+                    {errors.message && <p className="text-sm text-destructive mt-1">{errors.message}</p>}
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                  <Button type="submit" size="lg" className="w-full rounded-none" disabled={isSubmitting}>
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
@@ -341,30 +260,25 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Location Section */}
+      {/* Map */}
       <section className="py-24 bg-muted">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-              Our Location
-            </h2>
-            <p className="text-muted-foreground">
-              Sogakope, Volta Region, Ghana
-            </p>
+            <span className="section-label mb-4 block">Location</span>
+            <h2 className="font-display text-3xl font-bold text-foreground">Find Us</h2>
+            <p className="text-muted-foreground mt-2">Sogakope, Volta Region, Ghana</p>
           </div>
-          <div className="max-w-4xl mx-auto">
-            <div className="aspect-video rounded-2xl overflow-hidden border border-border">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31775.89834927839!2d0.5937!3d6.0062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1020a9e2c8b7b7b9%3A0x8c7b8c7b8c7b8c7b!2sSogakope%2C%20Ghana!5e0!3m2!1sen!2sus!4v1234567890"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="RIT Foundation Ghana location - Sogakope, Volta Region, Ghana"
-              />
-            </div>
+          <div className="max-w-4xl mx-auto aspect-video border border-border overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31775.89834927839!2d0.5937!3d6.0062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1020a9e2c8b7b7b9%3A0x8c7b8c7b8c7b8c7b!2sSogakope%2C%20Ghana!5e0!3m2!1sen!2sus!4v1234567890"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="RIT Foundation Ghana location"
+            />
           </div>
         </div>
       </section>

@@ -1,51 +1,43 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Award, Users, MapPin } from "lucide-react";
-
-const highlights = [
-  { icon: Award, label: "Registered NGO", value: "Companies Act 992" },
-  { icon: Users, label: "Focus", value: "Girls & Youth" },
-  { icon: MapPin, label: "Based In", value: "Volta Region, Ghana" },
-];
+import { ArrowRight } from "lucide-react";
 
 export function AboutSnapshot() {
   return (
     <section className="py-24 bg-background">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Image */}
+          <div className="relative">
+            <div className="aspect-[4/3] bg-muted overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=800&auto=format&fit=crop"
+                alt="Community development work"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Decorative element */}
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 border-4 border-primary -z-10" />
+          </div>
+
           {/* Content */}
           <div>
-            <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-4">
-              Who We Are
-            </span>
+            <span className="section-label mb-4 block">About Us</span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-6">
-              Building Pathways from Education to Employability
+              Who We Are
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              RIT Foundation Ghana is a registered non-governmental organization established to empower girls, young women, and youth through gender-responsive vocational, technical, and digital skills training. Since 2020, we have worked with communities in rural Ghana to bridge the gap between education and employability.
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              RIT Foundation Ghana is a registered non-governmental organization established to empower girls, young women, and youth through gender-responsive vocational, technical, and digital skills training.
             </p>
-            <Button asChild variant="outline" className="group">
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              Since 2020, we have worked with communities in rural Ghana to bridge the gap between education and employability.
+            </p>
+            <Button asChild variant="outline" className="rounded-none group">
               <Link to="/about">
-                Learn More About Us
+                Learn More
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-          </div>
-
-          {/* Highlights */}
-          <div className="grid sm:grid-cols-3 gap-6">
-            {highlights.map((item) => (
-              <div
-                key={item.label}
-                className="text-center p-6 rounded-2xl bg-card border border-border"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary mx-auto mb-4">
-                  <item.icon className="h-6 w-6" />
-                </div>
-                <p className="text-sm text-muted-foreground mb-1">{item.label}</p>
-                <p className="font-semibold text-foreground">{item.value}</p>
-              </div>
-            ))}
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Facebook, Instagram, Mail, MapPin, Phone, ArrowRight } from "lucide-react";
 
 const quickLinks = [
   { label: "About Us", link: "/about" },
@@ -11,34 +10,36 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "https://facebook.com/ritfoundationgh", label: "Facebook", handle: "@ritfoundationgh" },
-  { icon: Instagram, href: "https://instagram.com/ritskillsgh", label: "Instagram", handle: "@ritskillsgh" },
+  { icon: Facebook, href: "https://facebook.com/ritfoundationgh", label: "Facebook" },
+  { icon: Instagram, href: "https://instagram.com/ritskillsgh", label: "Instagram" },
 ];
 
 export function Footer() {
   return (
     <footer className="bg-secondary text-secondary-foreground">
-      <div className="container py-16">
+      <div className="container py-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary">
-                <span className="font-display text-lg font-bold text-primary-foreground">
-                  RIT
-                </span>
-              </div>
-              <div>
-                <span className="font-display text-lg font-semibold">
-                  RIT Foundation Ghana
-                </span>
-                <span className="block text-xs text-primary font-medium">LBG</span>
+            <Link to="/" className="inline-block mb-6">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full border-[3px] border-primary flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center">
+                    <div className="w-2 h-2 rounded-full bg-primary" />
+                  </div>
+                </div>
+                <div>
+                  <span className="font-display text-xl font-bold">RIT Foundation</span>
+                  <span className="block text-[10px] text-secondary-foreground/60 tracking-[0.15em] uppercase">
+                    Ghana LBG
+                  </span>
+                </div>
               </div>
             </Link>
-            <p className="text-sm text-secondary-foreground/80 mb-4 leading-relaxed">
-              A registered non-governmental organization empowering girls and youth in rural Ghana through vocational, digital, and entrepreneurial skills training.
+            <p className="text-sm text-secondary-foreground/70 mb-6 leading-relaxed">
+              Empowering girls and youth in rural Ghana through vocational, digital, and entrepreneurial skills training.
             </p>
-            <div className="text-xs text-secondary-foreground/60 space-y-1 mb-6">
+            <div className="text-xs text-secondary-foreground/50 space-y-1">
               <p>Registered NGO</p>
               <p>Companies Act, 2019 (Act 992)</p>
               <p>Reg. No: CG173310421</p>
@@ -47,14 +48,15 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="section-label mb-6 text-primary">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.link}
-                    className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors"
+                    className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors inline-flex items-center gap-2 group"
                   >
+                    <ArrowRight className="h-3 w-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
                     {link.label}
                   </Link>
                 </li>
@@ -64,27 +66,25 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4">Contact</h4>
+            <h4 className="section-label mb-6 text-primary">Contact</h4>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-sm text-secondary-foreground/80">
-                <MapPin className="h-5 w-5 shrink-0 mt-0.5" />
+              <li className="flex items-start gap-3 text-sm text-secondary-foreground/70">
+                <MapPin className="h-4 w-4 shrink-0 mt-1 text-primary" />
                 <div>
-                  <p>P.O. Box SG 90</p>
-                  <p>Sogasco Street</p>
-                  <p>Sogakope, Volta Region</p>
-                  <p>Ghana</p>
+                  <p>P.O. Box SG 90, Sogasco Street</p>
+                  <p>Sogakope, Volta Region, Ghana</p>
                 </div>
               </li>
-              <li className="flex items-start gap-3 text-sm text-secondary-foreground/80">
-                <Phone className="h-5 w-5 shrink-0 mt-0.5" />
+              <li className="flex items-start gap-3 text-sm text-secondary-foreground/70">
+                <Phone className="h-4 w-4 shrink-0 mt-1 text-primary" />
                 <div>
                   <p>+233 55 494 2195</p>
                   <p>+233 24 251 5127</p>
                 </div>
               </li>
-              <li className="flex items-center gap-3 text-sm text-secondary-foreground/80">
-                <Mail className="h-5 w-5 shrink-0" />
-                <a 
+              <li className="flex items-center gap-3 text-sm text-secondary-foreground/70">
+                <Mail className="h-4 w-4 shrink-0 text-primary" />
+                <a
                   href="mailto:ritfoundationofficial@gmail.com"
                   className="hover:text-primary transition-colors break-all"
                 >
@@ -94,10 +94,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Connect & CTA */}
+          {/* Connect */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-4">Connect With Us</h4>
-            <div className="space-y-3 mb-8">
+            <h4 className="section-label mb-6 text-primary">Connect With Us</h4>
+            <div className="flex gap-3 mb-8">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -105,24 +105,15 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="flex items-center gap-3 text-sm text-secondary-foreground/80 hover:text-primary transition-colors group"
+                  className="flex h-10 w-10 items-center justify-center border border-secondary-foreground/20 text-secondary-foreground/70 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all"
                 >
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary-foreground/10 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                    <social.icon className="h-4 w-4" />
-                  </div>
-                  <span>{social.handle}</span>
+                  <social.icon className="h-4 w-4" />
                 </a>
               ))}
             </div>
-            
-            <div className="space-y-3">
-              <Button asChild size="sm" className="w-full">
-                <Link to="/partner-with-us">Partner With Us</Link>
-              </Button>
-              <Button asChild variant="outline" size="sm" className="w-full border-secondary-foreground/20 text-secondary-foreground hover:bg-secondary-foreground/10 hover:text-secondary-foreground">
-                <Link to="/contact">Get in Touch</Link>
-              </Button>
-            </div>
+            <p className="text-sm text-secondary-foreground/70">
+              Follow us for updates on our programs and impact stories.
+            </p>
           </div>
         </div>
       </div>
@@ -130,7 +121,7 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-secondary-foreground/10">
         <div className="container py-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <p className="text-sm text-secondary-foreground/60 text-center">
+          <p className="text-xs text-secondary-foreground/50 text-center">
             © {new Date().getFullYear()} RIT Foundation Ghana. All rights reserved.
           </p>
         </div>

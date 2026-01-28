@@ -9,12 +9,12 @@ export default {
       center: true,
       padding: "1.5rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1280px",
       },
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Source Sans 3", "system-ui", "sans-serif"],
         display: ["Playfair Display", "Georgia", "serif"],
       },
       colors: {
